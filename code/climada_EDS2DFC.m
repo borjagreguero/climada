@@ -98,7 +98,7 @@ for EDS_i=1:length(EDS)
     DFC(EDS_i).peril_ID        = EDS(EDS_i).peril_ID;
     DFC(EDS_i).return_period   = return_period;
     % simply interpolate to the standard return periods
-    DFC(EDS_i).damage          = interp1(EDS_return_period,sorted_damage,return_period);
+    DFC(EDS_i).damage          = interp1(EDS_return_period,full(sorted_damage),return_period);
     if ~isempty(DFC(EDS_i).value)
         DFC(EDS_i).damage_of_value = DFC(EDS_i).damage/DFC(EDS_i).value;
     end
