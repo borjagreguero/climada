@@ -97,8 +97,7 @@ EDS.damage_fit      = [];
 EDS.damage_sort = sorted_damage;
 EDS.R           = 1./exceedence_freq;
 EDS.R_fit       = return_period;
-EDS.damage_fit  = interp1(EDS.R, EDS.damage_sort, EDS.R_fit);
-
+EDS.damage_fit  = interp1(EDS.R, full(EDS.damage_sort), EDS.R_fit);
 
 % - historical data
 no_generated      = length(EDS.orig_event_flag) / sum(EDS.orig_event_flag);
@@ -106,8 +105,7 @@ no_generated      = length(EDS.orig_event_flag) / sum(EDS.orig_event_flag);
                   = climada_damage_exceedence(EDS.damage(logical(EDS.orig_event_flag)), EDS.frequency(logical(EDS.orig_event_flag))*no_generated);
 EDS.damage_ori_sort = sorted_damage;  
 EDS.R_ori         = 1./exceedence_freq;
-EDS.damage_fit_ori  = interp1(EDS.R_ori, EDS.damage_ori_sort, EDS.R_fit);
-
+EDS.damage_fit_ori  = interp1(EDS.R_ori, full(EDS.damage_ori_sort), EDS.R_fit);
 
 %figure to check fit
 if check_plot
